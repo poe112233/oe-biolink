@@ -142,12 +142,16 @@
     display:grid;place-items:center}
   .lr .ic svg{width:16px;height:16px;fill:#4b5563}
   .lr .bd{flex:1;min-width:0}
-  .lr .bd .t{font-size:13.5px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .lr .bd .s{font-size:11.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lr .bd .t{display:block;font-size:13.5px;font-weight:650;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lr .bd .s{display:block;font-size:11.5px;line-height:1.35;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .lr .acts{display:flex;align-items:center;gap:5px;flex:0 0 auto}
   .lr .acts .btn{padding:5px 9px;font-size:12px}
   .lr.drag{opacity:.45}
   .lr.over{border-color:var(--brand);border-style:dashed}
+  .foldbtn{font-size:15px;line-height:1;padding:4px 8px}
+  .secblk.closed .foldbtn{transform:rotate(-90deg)}
+  .toasts{position:fixed;right:20px;bottom:20px;z-index:300;display:flex;flex-direction:column;gap:9px;
+    align-items:flex-end;max-width:min(380px,calc(100vw - 40px))}
 
   .secblk{border:1px solid var(--bd);border-radius:14px;margin-bottom:14px;background:#fff;overflow:hidden}
   .secblk > .hd{display:flex;align-items:center;gap:11px;padding:13px 15px;background:#fafbfc;border-bottom:1px solid var(--bd2)}
@@ -534,7 +538,8 @@
   function toast(msg, kind) {
     var el = document.createElement('div');
     el.className = 'toast' + (kind ? ' ' + kind : '');
-    el.innerHTML = (kind === 'ok' ? iconSvg('check') : kind === 'err' ? iconSvg('question') : '') + '<span>' + esc(msg) + '</span>';
+    el.innerHTML = (kind === 'ok' ? iconSvg('check') : kind === 'err' ? iconSvg('question') : '') +
+      '<span style="min-width:0">' + esc(msg) + '</span>';
     $('#toasts').appendChild(el);
     setTimeout(function () { el.remove(); }, 3600);
   }
@@ -653,7 +658,7 @@
            '<span class="ti">' + esc(sec.title || '(未命名区块)') + '</span>' +
            '<div class="acts" style="display:flex;gap:5px">' +
              '<label class="tg" title="显示/隐藏"><input type="checkbox" data-act="sec-enable" ' + (sec.enabled === false ? '' : 'checked') + '><i></i></label>' +
-             '<button class="btn" data-act="sec-toggle" title="展开/收起">⌄</button>' +
+             '<button class="btn foldbtn" data-act="sec-toggle" title="展开/收起">⌄</button>' +
              '<button class="btn dgr" data-act="sec-del" title="删除">✕</button>' +
            '</div></div>';
       h += '<div class="bd">';
