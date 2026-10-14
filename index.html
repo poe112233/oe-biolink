@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OE — Oriental Essence</title>
+<meta name="description" content="OE 品牌 · 运动鞋履选购与内容入口合集：主站、尺码表、杜康区物价看板、链接转换工具。">
+<meta name="theme-color" content="#0b0b0d">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◼</text></svg>">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg2:#121216;
+    --card:rgba(255,255,255,.045);
+    --card-hover:rgba(255,255,255,.085);
+    --line:rgba(255,255,255,.10);
+    --fg:#f4f4f5;
+    --fg-2:#a1a1aa;
+    --accent:#e8ff4d;
+    --accent-2:#7c5cff;
+    --radius:18px;
+    --max:520px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Inter,system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--fg);
+    min-height:100dvh;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* ambient background */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;
+    background:
+      radial-gradient(700px 380px at 50% -8%, rgba(124,92,255,.30), transparent 70%),
+      radial-gradient(520px 320px at 12% 22%, rgba(232,255,77,.10), transparent 70%),
+      radial-gradient(600px 400px at 92% 78%, rgba(255,80,140,.10), transparent 70%),
+      linear-gradient(180deg,var(--bg),var(--bg2));
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:40px 20px 72px}
+
+  /* ---------- profile ---------- */
+  .avatar{
+    width:88px;height:88px;margin:0 auto 18px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;
+    font:800 30px/1 "Segoe UI",system-ui;color:#0b0b0d;
+    letter-spacing:-1px;
+    box-shadow:0 10px 40px rgba(124,92,255,.35);
+  }
+  h1{font-size:24px;font-weight:800;letter-spacing:-.4px;text-align:center}
+  .handle{text-align:center;color:var(--fg-2);font-size:14px;margin-top:4px}
+  .tagline{
+    text-align:center;margin-top:14px;font-size:14.5px;color:#d4d4d8;
+    background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:12px 16px;
+  }
+  .badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+  .badge{
+    font-size:11.5px;letter-spacing:.4px;padding:5px 11px;border-radius:999px;
+    background:rgba(232,255,77,.10);border:1px solid rgba(232,255,77,.30);color:var(--accent);
+  }
+
+  /* ---------- socials ---------- */
+  .socials{display:flex;justify-content:center;gap:10px;margin:22px 0 6px}
+  .socials a{
+    width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
+    background:var(--card);border:1px solid var(--line);color:var(--fg);
+    transition:.22s cubic-bezier(.2,.8,.3,1);
+  }
+  .socials a:hover{background:var(--card-hover);transform:translateY(-3px);border-color:rgba(232,255,77,.45)}
+  .socials svg{width:20px;height:20px;fill:currentColor}
+
+  /* ---------- sections ---------- */
+  section{margin-top:30px}
+  .sec-title{
+    font-size:11.5px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--fg-2);margin-bottom:12px;padding-left:2px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .sec-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+
+  /* ---------- link buttons ---------- */
+  .links{display:flex;flex-direction:column;gap:10px}
+  .link{
+    display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:15px 16px;transition:.22s cubic-bezier(.2,.8,.3,1);position:relative;overflow:hidden;
+  }
+  .link::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg,var(--accent),var(--accent-2));
+    opacity:0;transition:.22s;
+  }
+  .link:hover{background:var(--card-hover);transform:translateY(-2px);border-color:rgba(255,255,255,.20)}
+  .link:hover::before{opacity:1}
+  .link .ic{
+    width:40px;height:40px;flex:0 0 40px;border-radius:12px;display:grid;place-items:center;
+    background:rgba(255,255,255,.06);border:1px solid var(--line);
+  }
+  .link .ic svg{width:19px;height:19px;fill:#d4d4d8}
+  .link .meta{flex:1;min-width:0}
+  .link .t{font-weight:650;font-size:15px;letter-spacing:-.1px}
+  .link .s{font-size:12.5px;color:var(--fg-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .link .arrow{color:var(--fg-2);flex:0 0 auto;transition:.22s}
+  .link:hover .arrow{color:var(--accent);transform:translateX(3px)}
+  .link .arrow svg{width:16px;height:16px;fill:currentColor}
+  .link.primary{
+    background:linear-gradient(135deg,var(--accent),#b8e02c);
+    border-color:transparent;color:#0b0b0d;
+  }
+  .link.primary .t{font-weight:800}
+  .link.primary .s,.link.primary .arrow{color:rgba(11,11,13,.62)}
+  .link.primary .ic{background:rgba(11,11,13,.10);border-color:rgba(11,11,13,.14)}
+  .link.primary .ic svg{fill:#0b0b0d}
+  .link.primary::before{display:none}
+  .link.primary:hover{box-shadow:0 12px 34px rgba(232,255,77,.24)}
+  .pill{
+    font-size:10.5px;letter-spacing:.5px;padding:3px 8px;border-radius:999px;
+    background:rgba(124,92,255,.18);border:1px solid rgba(124,92,255,.42);color:#c4b5fd;margin-left:8px;
+    white-space:nowrap;
+  }
+
+  /* ---------- table ---------- */
+  .tablewrap{
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card);
+  }
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead th{
+    text-align:left;font-size:11px;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--fg-2);padding:11px 14px;background:rgba(255,255,255,.035);
+    font-weight:600;border-bottom:1px solid var(--line);
+  }
+  tbody td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.055)}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:rgba(255,255,255,.03)}
+  td.num{font-variant-numeric:tabular-nums;color:var(--fg)}
+  .swatch{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:8px;vertical-align:middle}
+  .up{color:#f87171}   /* 中文涨=红 */
+  .down{color:#4ade80} /* 中文跌=绿 */
+
+  /* ---------- code ---------- */
+  .codebox{
+    display:flex;align-items:center;gap:10px;justify-content:space-between;
+    border:1px dashed rgba(232,255,77,.40);border-radius:var(--radius);
+    background:rgba(232,255,77,.055);padding:14px 16px;
+  }
+  .codebox .k{font-size:12px;color:var(--fg-2);letter-spacing:.6px}
+  .codebox .v{font:700 17px/1.2 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--accent);letter-spacing:2px;margin-top:2px}
+  .copy{
+    flex:0 0 auto;border:1px solid rgba(232,255,77,.40);background:rgba(232,255,77,.10);
+    color:var(--accent);border-radius:10px;padding:8px 12px;font-size:12.5px;font-weight:600;cursor:pointer;
+  }
+  .copy:hover{background:rgba(232,255,77,.20)}
+
+  /* ---------- footer ---------- */
+  footer{margin-top:40px;text-align:center;color:var(--fg-2);font-size:12.5px;line-height:1.9}
+  footer .dot{opacity:.5}
+  .totop{
+    display:inline-block;margin-top:6px;color:var(--fg-2);text-decoration:none;
+    border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:12px;
+  }
+  .totop:hover{color:var(--accent);border-color:rgba(232,255,77,.4)}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  @media (max-width:380px){ .link{padding:13px} .wrap{padding:32px 16px 60px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ PROFILE ============ -->
+  <div class="avatar">OE</div>
+  <h1>Oriental Essence</h1>
+  <div class="handle">@oe_brand · 运动鞋履选购</div>
+
+  <p class="tagline">NIKE / Air Jordan / BALENCIAGA / ASICS / NEW BALANCE / YEEZY / SALOMON —— 官方目录浏览与链接转换入口。</p>
+
+  <div class="badges">
+    <span class="badge">正品货源</span>
+    <span class="badge">全球直邮</span>
+    <span class="badge">每日更新</span>
+  </div>
+
+  <div class="socials">
+    <a href="https://oe-brand.app.workbuddy.host/" title="主站" aria-label="主站">
+      <svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5Zm0 7.2L4.2 7 12 4.8 19.8 7 12 9.2ZM4 11.2V16c0 1.1 3.6 3 8 3s8-1.9 8-3v-4.8l-8 4-8-4Z"/></svg>
+    </a>
+    <a href="https://t.me/" title="Telegram" aria-label="Telegram">
+      <svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.8 19c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.3 13.1 1.4 11.6c-1-.3-1-1 .2-1.5l19-7.3c.9-.3 1.6.2 1.3 1.5Z"/></svg>
+    </a>
+    <a href="https://discord.com/" title="Discord" aria-label="Discord">
+      <svg viewBox="0 0 24 24"><path d="M19.3 5.3A16.7 16.7 0 0 0 15.4 4l-.2.4c1.5.4 2.4.9 3.3 1.5a12.6 12.6 0 0 0-10.9 0c.9-.6 1.8-1.1 3.3-1.5L10.6 4a16.7 16.7 0 0 0-4 1.3C3.6 9.5 2.9 13.6 3.3 17.7A16.8 16.8 0 0 0 8.5 20l1-1.5c-.9-.3-1.7-.7-2.4-1.2l.6-.4c4.4 2 9.2 2 13.6 0l.6.4c-.8.5-1.6.9-2.4 1.2l1 1.5a16.8 16.8 0 0 0 5.2-2.3c.5-4.8-.7-8.9-3.3-12.4ZM9.7 15.4c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.9.9 1.8 2c0 1.1-.8 2-1.8 2Zm4.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.9.9 1.8 2c0 1.1-.8 2-1.8 2Z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/" title="TikTok" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M16.5 2h-3v13.1a2.6 2.6 0 1 1-2.2-2.6V9.4a5.7 5.7 0 1 0 5.2 5.7V8.9a7 7 0 0 0 4 1.3V7.1a4.1 4.1 0 0 1-4-4.1V2Z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/" title="Instagram" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.2A6.6 6.6 0 1 0 12 18.6 6.6 6.6 0 0 0 12 5.4Zm0 10.9A4.3 4.3 0 1 1 12 7.7a4.3 4.3 0 0 1 0 8.6Zm6.9-11a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/></svg>
+    </a>
+    <a href="https://www.youtube.com/" title="YouTube" aria-label="YouTube">
+      <svg viewBox="0 0 24 24"><path d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.6 3.6 12 3.6 12 3.6s-4.6 0-7.8.3c-.4.1-1.4.1-2.3 1-.7.7-.9 2.3-.9 2.3S.8 9.1.8 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.3 7.6.3s4.6 0 7.8-.3c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8ZM9.8 15.3V8.7l5.7 3.3-5.7 3.3Z"/></svg>
+    </a>
+  </div>
+
+  <!-- ============ 主要入口 ============ -->
+  <section>
+    <div class="sec-title">主要入口</div>
+    <div class="links">
+
+      <a class="link primary" href="https://oe-brand.app.workbuddy.host/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M6 2h3l5.5 12.5L20 2h3l-7 20h-4L6 2Z"/></svg></span>
+        <span class="meta">
+          <span class="t">OE 品牌主站</span>
+          <span class="s">oe-brand.app.workbuddy.host — 全品类目录与选购</span>
+        </span>
+        <span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6Z"/></svg></span>
+      </a>
+
+      <a class="link" href="https://wdzl.ores.cc/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M10.6 13.4a1.9 1.9 0 0 0 2.8 0l3-3a2 2 0 0 0-2.8-2.8l-1 1-1.4-1.4 1-1a3.6 3.6 0 0 1 5.1 5.1l-3 3a3.6 3.6 0 0 1-5.1 0l1.4-1.4Zm2.8-2.8a1.9 1.9 0 0 0-2.8 0l-3 3a2 2 0 0 0 2.8 2.8l1-1 1.4 1.4-1 1a3.6 3.6 0 0 1-5.1-5.1l3-3a3.6 3.6 0 0 1 5.1 0l-1.4 1.4Z"/></svg></span>
+        <span class="meta">
+          <span class="t">链接转换站</span>
+          <span class="s">wdzl.ores.cc — 多平台购物链接一键转换</span>
+        </span>
+        <span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6Z"/></svg></span>
+      </a>
+
+      <a class="link" href="https://wj.ores.cc/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 17h2.2l2.3-6.4 2.6 8 2.5-11L15.4 17H21v2H3v-2Z"/></svg></span>
+        <span class="meta">
+          <span class="t">杜康区物价看板</span>
+          <span class="s">wj.ores.cc — 5 期行情与金币价格追踪</span>
+        </span>
+        <span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6Z"/></svg></span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ 品类直达 ============ -->
+  <section>
+    <div class="sec-title">品类直达</div>
+    <div class="links">
+      <a class="link" href="https://oe-brand.app.workbuddy.host/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 9h18v2H3V9Zm0 4h18v2H3v-2Zm0 4h18v2H3v-2Z"/></svg></span>
+        <span class="meta"><span class="t">NIKE / Air Jordan</span><span class="s">篮球与跑步鞋款</span></span>
+        <span class="pill">热门</span>
+      </a>
+      <a class="link" href="https://oe-brand.app.workbuddy.host/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 9h18v2H3V9Zm0 4h18v2H3v-2Zm0 4h18v2H3v-2Z"/></svg></span>
+        <span class="meta"><span class="t">BALENCIAGA / ASICS</span><span class="s">老爹鞋与运动休闲</span></span>
+      </a>
+      <a class="link" href="https://oe-brand.app.workbuddy.host/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 9h18v2H3V9Zm0 4h18v2H3v-2Zm0 4h18v2H3v-2Z"/></svg></span>
+        <span class="meta"><span class="t">NEW BALANCE / SALOMON</span><span class="s">复古跑鞋与户外机能</span></span>
+      </a>
+      <a class="link" href="https://oe-brand.app.workbuddy.host/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 9h18v2H3V9Zm0 4h18v2H3v-2Zm0 4h18v2H3v-2Z"/></svg></span>
+        <span class="meta"><span class="t">YEEZY / 服饰配件</span><span class="s">Hoodie、T-shirt 等</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ 邀请码 ============ -->
+  <section>
+    <div class="sec-title">邀请码</div>
+    <div class="codebox">
+      <div>
+        <div class="k">oopbuy 平台邀请码</div>
+        <div class="v" id="code">TYZZSCDV0</div>
+      </div>
+      <button class="copy" id="copyBtn" type="button">复制</button>
+    </div>
+  </section>
+
+  <!-- ============ 尺码对照表 ============ -->
+  <section>
+    <div class="sec-title">EU 尺码对照</div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>EU</th><th>US 男</th><th>US 女</th><th>脚长 (cm)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">39</td><td class="num">6</td><td class="num">7</td><td class="num">24.5</td></tr>
+          <tr><td class="num">40</td><td class="num">7</td><td class="num">8</td><td class="num">25.0</td></tr>
+          <tr><td class="num">41</td><td class="num">8</td><td class="num">9</td><td class="num">25.5</td></tr>
+          <tr><td class="num">42</td><td class="num">9</td><td class="num">10</td><td class="num">26.0</td></tr>
+          <tr><td class="num">43</td><td class="num">10</td><td class="num">11</td><td class="num">26.5</td></tr>
+          <tr><td class="num">44</td><td class="num">11</td><td class="num">12</td><td class="num">27.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 行情快照 ============ -->
+  <section>
+    <div class="sec-title">杜康区行情快照</div>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>日期</th><th>金币价</th><th>环比</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="num">08.15</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="num">08.23</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="num">09.05</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="num">09.21</td><td class="num">—</td><td class="num">—</td></tr>
+          <tr><td class="num">10.10</td><td class="num">283.5</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 社群 ============ -->
+  <section>
+    <div class="sec-title">社群与沟通</div>
+    <div class="links">
+      <a class="link" href="https://t.me/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.8 19c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.3 13.1 1.4 11.6c-1-.3-1-1 .2-1.5l19-7.3c.9-.3 1.6.2 1.3 1.5Z"/></svg></span>
+        <span class="meta"><span class="t">Telegram 频道</span><span class="s">新品上架与补货通知</span></span>
+        <span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6Z"/></svg></span>
+      </a>
+      <a class="link" href="https://discord.com/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M19.3 5.3A16.7 16.7 0 0 0 15.4 4l-.2.4c1.5.4 2.4.9 3.3 1.5a12.6 12.6 0 0 0-10.9 0c.9-.6 1.8-1.1 3.3-1.5L10.6 4a16.7 16.7 0 0 0-4 1.3C3.6 9.5 2.9 13.6 3.3 17.7A16.8 16.8 0 0 0 8.5 20l1-1.5c-.9-.3-1.7-.7-2.4-1.2l.6-.4c4.4 2 9.2 2 13.6 0l.6.4c-.8.5-1.6.9-2.4 1.2l1 1.5a16.8 16.8 0 0 0 5.2-2.3c.5-4.8-.7-8.9-3.3-12.4ZM9.7 15.4c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.9.9 1.8 2c0 1.1-.8 2-1.8 2Zm4.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.9.9 1.8 2c0 1.1-.8 2-1.8 2Z"/></svg></span>
+        <span class="meta"><span class="t">Discord 社区</span><span class="s">尺码咨询与订单交流</span></span>
+        <span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6Z"/></svg></span>
+      </a>
+      <a class="link" href="https://oe-brand.app.workbuddy.host/">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg></span>
+        <span class="meta"><span class="t">邮件订阅</span><span class="s">新品与优惠清单</span></span>
+        <span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6-1.4-1.4L12.2 12 7.6 7.4 9 6Z"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 Oriental Essence · OE</div>
+    <div class="dot">—</div>
+    <div>本页自建托管，无第三方平台水印</div>
+    <a class="totop" href="#">回到顶部 ↑</a>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copyBtn');
+  var code = document.getElementById('code').textContent.trim();
+  btn.addEventListener('click', function () {
+    function done() {
+      var old = btn.textContent;
+      btn.textContent = '已复制';
+      setTimeout(function () { btn.textContent = old; }, 1600);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(code).then(done, fallback);
+    } else { fallback(); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = code;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) { btn.textContent = code; }
+      document.body.removeChild(ta);
+    }
+  });
+})();
+</script>
+</body>
+</html>
