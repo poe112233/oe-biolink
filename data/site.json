@@ -1,0 +1,196 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-14T08:55:00.000Z",
+  "site": {
+    "title": "OE — Oriental Essence",
+    "description": "OE 品牌 · 运动鞋履选购与内容入口合集",
+    "themeColor": "#0b0b0d",
+    "footer": "© 2026 Oriental Essence · OE",
+    "footerNote": "本页自建托管，无第三方平台水印"
+  },
+  "theme": {
+    "accent": "#e8ff4d",
+    "accent2": "#7c5cff",
+    "bg": "#0b0b0d",
+    "bg2": "#121216",
+    "radius": 18,
+    "fontScale": 1
+  },
+  "profile": {
+    "avatarText": "OE",
+    "avatarUrl": "",
+    "name": "Oriental Essence",
+    "handle": "@oe_brand",
+    "bio": "NIKE / Air Jordan / BALENCIAGA / ASICS / NEW BALANCE / YEEZY / SALOMON —— 官方目录浏览与链接转换入口。",
+    "badges": ["正品货源", "全球直邮", "每日更新"]
+  },
+  "socials": [
+    { "id": "s1", "icon": "nglink", "url": "https://oe-brand.app.workbuddy.host/", "label": "主站" },
+    { "id": "s2", "icon": "telegram", "url": "https://t.me/", "label": "Telegram" },
+    { "id": "s3", "icon": "discord", "url": "https://discord.com/", "label": "Discord" },
+    { "id": "s4", "icon": "tiktok", "url": "https://www.tiktok.com/", "label": "TikTok" },
+    { "id": "s5", "icon": "instagram", "url": "https://www.instagram.com/", "label": "Instagram" },
+    { "id": "s6", "icon": "youtube", "url": "https://www.youtube.com/", "label": "YouTube" }
+  ],
+  "sections": [
+    {
+      "id": "sec_main",
+      "type": "links",
+      "title": "主要入口",
+      "items": [
+        {
+          "id": "l1",
+          "icon": "bolt",
+          "title": "OE 品牌主站",
+          "subtitle": "oe-brand.app.workbuddy.host — 全品类目录与选购",
+          "url": "https://oe-brand.app.workbuddy.host/",
+          "badge": "",
+          "style": "primary",
+          "enabled": true
+        },
+        {
+          "id": "l2",
+          "icon": "link",
+          "title": "链接转换站",
+          "subtitle": "wdzl.ores.cc — 多平台购物链接一键转换",
+          "url": "https://wdzl.ores.cc/",
+          "badge": "",
+          "style": "default",
+          "enabled": true
+        },
+        {
+          "id": "l3",
+          "icon": "chart",
+          "title": "杜康区物价看板",
+          "subtitle": "wj.ores.cc — 行情与金币价格追踪",
+          "url": "https://wj.ores.cc/",
+          "badge": "",
+          "style": "default",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "sec_cat",
+      "type": "links",
+      "title": "品类直达",
+      "items": [
+        {
+          "id": "l4",
+          "icon": "star",
+          "title": "NIKE / Air Jordan",
+          "subtitle": "篮球与跑步鞋款",
+          "url": "https://oe-brand.app.workbuddy.host/",
+          "badge": "热门",
+          "style": "default",
+          "enabled": true
+        },
+        {
+          "id": "l5",
+          "icon": "star",
+          "title": "BALENCIAGA / ASICS",
+          "subtitle": "老爹鞋与运动休闲",
+          "url": "https://oe-brand.app.workbuddy.host/",
+          "badge": "",
+          "style": "default",
+          "enabled": true
+        },
+        {
+          "id": "l6",
+          "icon": "star",
+          "title": "NEW BALANCE / SALOMON",
+          "subtitle": "复古跑鞋与户外机能",
+          "url": "https://oe-brand.app.workbuddy.host/",
+          "badge": "",
+          "style": "default",
+          "enabled": true
+        },
+        {
+          "id": "l7",
+          "icon": "star",
+          "title": "YEEZY / 服饰配件",
+          "subtitle": "Hoodie、T-shirt 等",
+          "url": "https://oe-brand.app.workbuddy.host/",
+          "badge": "",
+          "style": "default",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "sec_code",
+      "type": "code",
+      "title": "邀请码",
+      "label": "oopbuy 平台邀请码",
+      "value": "TYZZSCDV0",
+      "enabled": true
+    },
+    {
+      "id": "sec_size",
+      "type": "table",
+      "title": "EU 尺码对照",
+      "columns": ["EU", "US 男", "US 女", "脚长 (cm)"],
+      "rows": [
+        ["39", "6", "7", "24.5"],
+        ["40", "7", "8", "25.0"],
+        ["41", "8", "9", "25.5"],
+        ["42", "9", "10", "26.0"],
+        ["43", "10", "11", "26.5"],
+        ["44", "11", "12", "27.0"]
+      ],
+      "enabled": true
+    },
+    {
+      "id": "sec_coin",
+      "type": "table",
+      "title": "杜康区金币价",
+      "columns": ["日期", "金币价", "环比"],
+      "rows": [
+        ["8.13", "285", "—"],
+        ["8.20", "284", "↓"],
+        ["8.23", "284", "—"],
+        ["9.05", "284.5", "↑"],
+        ["9.21", "284", "↓"],
+        ["10.10", "283.5", "↓"]
+      ],
+      "enabled": true
+    },
+    {
+      "id": "sec_social",
+      "type": "links",
+      "title": "社群与沟通",
+      "items": [
+        {
+          "id": "l8",
+          "icon": "telegram",
+          "title": "Telegram 频道",
+          "subtitle": "新品上架与补货通知",
+          "url": "https://t.me/",
+          "badge": "",
+          "style": "default",
+          "enabled": true
+        },
+        {
+          "id": "l9",
+          "icon": "discord",
+          "title": "Discord 社区",
+          "subtitle": "尺码咨询与订单交流",
+          "url": "https://discord.com/",
+          "badge": "",
+          "style": "default",
+          "enabled": true
+        },
+        {
+          "id": "l10",
+          "icon": "mail",
+          "title": "邮件订阅",
+          "subtitle": "新品与优惠清单",
+          "url": "https://oe-brand.app.workbuddy.host/",
+          "badge": "",
+          "style": "default",
+          "enabled": true
+        }
+      ]
+    }
+  ]
+}
